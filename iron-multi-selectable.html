@@ -102,11 +102,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     _toggleSelected: function(value) {
       var i = this.selectedValues.indexOf(value);
       var unselected = i < 0;
+      var values = this.selectedValues;
       if (unselected) {
-        this.selectedValues.push(value);
+        values.push(value);
       } else {
-        this.selectedValues.splice(i, 1);
+        values.splice(i, 1);
       }
+      this.set('selectedValues', []);
+      this.set('selectedValues', values);
       this._selection.setItemSelected(this._valueToItem(value), unselected);
     }
   };
